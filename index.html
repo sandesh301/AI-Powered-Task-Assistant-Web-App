@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Powered Task Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__header">
+        <div>
+          <h1>Saved Plans</h1>
+          <p class="muted">Load or manage your previous plans.</p>
+        </div>
+        <span class="pill">Offline AI Mode</span>
+      </div>
+      <div class="sidebar__actions">
+        <button id="clear-all" class="btn ghost" type="button">Clear All</button>
+      </div>
+      <div id="saved-plans" class="saved-plans" aria-live="polite"></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="hero">
+        <div>
+          <p class="pill pill--subtle">Local planner</p>
+          <h2>Turn messy tasks into an organized, actionable plan.</h2>
+          <p class="muted">Describe what you need to accomplish, pick a mode, and let the offline planner turn it into clear steps you can save for later.</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <div class="card__header">
+          <h3>Describe your work</h3>
+          <span class="muted">Supports daily plans, projects, and study sessions.</span>
+        </div>
+        <form id="planner-form" class="form" novalidate>
+          <label class="form__group">
+            <span>Task or project description</span>
+            <textarea id="input-text" rows="5" placeholder="Emails, gym, study JavaScript, side project..." required></textarea>
+          </label>
+
+          <div class="form__row">
+            <label class="form__group">
+              <span>Planning mode</span>
+              <select id="mode">
+                <option value="daily">Daily plan</option>
+                <option value="project">Project breakdown</option>
+                <option value="study">Study plan</option>
+              </select>
+            </label>
+            <label class="form__group">
+              <span>Optional title</span>
+              <input id="title" type="text" placeholder="Plan My Day – March 10" />
+            </label>
+          </div>
+
+          <div class="form__actions">
+            <button id="generate" class="btn primary" type="submit">Generate plan</button>
+            <button id="save" class="btn" type="button" disabled>Save plan</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" id="output-card" aria-live="polite">
+        <div class="card__header">
+          <h3>Plan output</h3>
+          <span class="muted">Your structured plan will appear here.</span>
+        </div>
+        <div id="output" class="output"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
